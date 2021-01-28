@@ -1,13 +1,15 @@
 <template>
-	<u-popup :maskCloseAble="maskCloseAble" mode="bottom" :popup="false" v-model="value" length="auto" :safeAreaInsetBottom="safeAreaInsetBottom" @close="close" :z-index="uZIndex">
+	<tui-bottom-popup :mask="maskCloseAble" mode="bottom" :show="value" @close="close" :z-index="uZIndex">
 		<view class="u-datetime-picker">
 			<view class="u-picker-header" @touchmove.stop.prevent="">
-				<view class="u-btn-picker u-btn-picker--tips" 
-					:style="{ color: cancelColor }" 
-					hover-class="u-opacity" 
-					:hover-stay-time="150" 
+				<view
+					class="u-btn-picker u-btn-picker--tips"
+					:style="{ color: cancelColor }"
+					hover-class="u-opacity"
+					:hover-stay-time="150"
 					@tap="getResult('cancel')"
-				>{{cancelText}}</view>
+					>{{ cancelText }}</view
+				>
 				<view class="u-picker__title">{{ title }}</view>
 				<view
 					class="u-btn-picker u-btn-picker--primary"
@@ -17,11 +19,18 @@
 					@touchmove.stop=""
 					@tap.stop="getResult('confirm')"
 				>
-					{{confirmText}}
+					{{ confirmText }}
 				</view>
 			</view>
 			<view class="u-picker-body">
-				<picker-view v-if="mode == 'region'" :value="valueArr" @change="change" class="u-picker-view" @pickstart="pickstart" @pickend="pickend">
+				<picker-view
+					v-if="mode == 'region'"
+					:value="valueArr"
+					@change="change"
+					class="u-picker-view"
+					@pickstart="pickstart"
+					@pickend="pickend"
+				>
 					<picker-view-column v-if="!reset && params.province">
 						<view class="u-column-item" v-for="(item, index) in provinces" :key="index">
 							<view class="u-line-1">{{ item.label }}</view>
@@ -38,7 +47,14 @@
 						</view>
 					</picker-view-column>
 				</picker-view>
-				<picker-view v-else-if="mode == 'time'" :value="valueArr" @change="change" class="u-picker-view" @pickstart="pickstart" @pickend="pickend">
+				<picker-view
+					v-else-if="mode == 'time'"
+					:value="valueArr"
+					@change="change"
+					class="u-picker-view"
+					@pickstart="pickstart"
+					@pickend="pickend"
+				>
 					<picker-view-column v-if="!reset && params.year">
 						<view class="u-column-item" v-for="(item, index) in years" :key="index">
 							{{ item }}
@@ -76,14 +92,28 @@
 						</view>
 					</picker-view-column>
 				</picker-view>
-				<picker-view v-else-if="mode == 'selector'" :value="valueArr" @change="change" class="u-picker-view" @pickstart="pickstart" @pickend="pickend">
+				<picker-view
+					v-else-if="mode == 'selector'"
+					:value="valueArr"
+					@change="change"
+					class="u-picker-view"
+					@pickstart="pickstart"
+					@pickend="pickend"
+				>
 					<picker-view-column v-if="!reset">
 						<view class="u-column-item" v-for="(item, index) in range" :key="index">
 							<view class="u-line-1">{{ getItemValue(item, 'selector') }}</view>
 						</view>
 					</picker-view-column>
 				</picker-view>
-				<picker-view v-else-if="mode == 'multiSelector'" :value="valueArr" @change="change" class="u-picker-view" @pickstart="pickstart" @pickend="pickend">
+				<picker-view
+					v-else-if="mode == 'multiSelector'"
+					:value="valueArr"
+					@change="change"
+					class="u-picker-view"
+					@pickstart="pickstart"
+					@pickend="pickend"
+				>
 					<picker-view-column v-if="!reset" v-for="(item, index) in range" :key="index">
 						<view class="u-column-item" v-for="(item1, index1) in item" :key="index1">
 							<view class="u-line-1">{{ getItemValue(item1, 'multiSelector') }}</view>
@@ -92,7 +122,7 @@
 				</picker-view>
 			</view>
 		</view>
-	</u-popup>
+	</tui-bottom-popup>
 </template>
 
 <script>
@@ -145,110 +175,110 @@ export default {
 					area: true,
 					timestamp: true,
 				};
-			}
+			},
 		},
 		// 当mode=selector或者mode=multiSelector时，提供的数组
 		range: {
 			type: Array,
 			default() {
 				return [];
-			}
+			},
 		},
 		// 当mode=selector或者mode=multiSelector时，提供的默认选中的下标
 		defaultSelector: {
 			type: Array,
 			default() {
 				return [0];
-			}
+			},
 		},
 		// 当 range 是一个 Array＜Object＞ 时，通过 range-key 来指定 Object 中 key 的值作为选择器显示内容
 		rangeKey: {
 			type: String,
-			default: ''
+			default: '',
 		},
 		// 模式选择，region-地区类型，time-时间类型，selector-单列模式，multiSelector-多列模式
 		mode: {
 			type: String,
-			default: 'time'
+			default: 'time',
 		},
 		// 年份开始时间
 		startYear: {
 			type: [String, Number],
-			default: 1950
+			default: 1950,
 		},
 		// 年份结束时间
 		endYear: {
 			type: [String, Number],
-			default: 2050
+			default: 2050,
 		},
 		// "取消"按钮的颜色
 		cancelColor: {
 			type: String,
-			default: '#606266'
+			default: '#606266',
 		},
 		// "确定"按钮的颜色
 		confirmColor: {
 			type: String,
-			default: '#2979ff'
+			default: '#2979ff',
 		},
 		// 默认显示的时间，2025-07-02 || 2025-07-02 13:01:00 || 2025/07/02
 		defaultTime: {
 			type: String,
-			default: ''
+			default: '',
 		},
 		// 默认显示的地区，可传类似["河北省", "秦皇岛市", "北戴河区"]
 		defaultRegion: {
 			type: Array,
 			default() {
 				return [];
-			}
+			},
 		},
 		// 时间模式时，是否显示后面的年月日中文提示
 		showTimeTag: {
 			type: Boolean,
-			default: true
+			default: true,
 		},
 		// 默认显示地区的编码，defaultRegion和areaCode同时存在，areaCode优先，可传类似["13", "1303", "130304"]
 		areaCode: {
 			type: Array,
 			default() {
 				return [];
-			}
+			},
 		},
 		safeAreaInsetBottom: {
 			type: Boolean,
-			default: false
+			default: false,
 		},
 		// 是否允许通过点击遮罩关闭Picker
 		maskCloseAble: {
 			type: Boolean,
-			default: true
+			default: true,
 		},
 		// 通过双向绑定控制组件的弹出与收起
 		value: {
 			type: Boolean,
-			default: false
+			default: false,
 		},
 		// 弹出的z-index值
 		zIndex: {
 			type: [String, Number],
-			default: 0
+			default: 0,
 		},
 		// 顶部标题
 		title: {
 			type: String,
-			default: ''
+			default: '',
 		},
 		// 取消按钮的文字
 		cancelText: {
 			type: String,
-			default: '取消'
+			default: '取消',
 		},
 		// 确认按钮的文字
 		confirmText: {
 			type: String,
-			default: '确认'
-		}
+			default: '确认',
+		},
 	},
 	data() {
 		return {
@@ -274,7 +304,7 @@ export default {
 			province: 0,
 			city: 0,
 			area: 0,
-			moving: false // 列是否还在滑动中，微信小程序如果在滑动中就点确定，结果可能不准确
+			moving: false, // 列是否还在滑动中，微信小程序如果在滑动中就点确定，结果可能不准确
 		};
 	},
 	mounted() {
@@ -295,7 +325,7 @@ export default {
 		uZIndex() {
 			// 如果用户有传递z-index值，优先使用
 			return this.zIndex ? this.zIndex : this.$u.zIndex.popup;
-		}
+		},
 	},
 	watch: {
 		propsChange() {
@@ -318,7 +348,7 @@ export default {
 				this.reset = true;
 				setTimeout(() => this.init(), 10);
 			}
-		}
+		},
 	},
 	methods: {
 		// 标识滑动开始，只有微信小程序才有这样的事件
@@ -346,7 +376,7 @@ export default {
 			return +num < 10 ? '0' + num : String(num);
 		},
 		// 生成递进的数组
-		generateArray: function(start, end) {
+		generateArray: function (start, end) {
 			// 转为数值格式，否则用户给end-year等传递字符串值时，下面的end+1会导致字符串拼接，而不是相加
 			start = Number(start);
 			end = Number(end);
@@ -354,7 +384,7 @@ export default {
 			// 生成数组，获取其中的索引，并剪出来
 			return [...Array(end + 1).keys()].slice(start);
 		},
-		getIndex: function(arr, val) {
+		getIndex: function (arr, val) {
 			let index = arr.indexOf(val);
 			// 如果index为-1(即找不到index值)，~(-1)=-(-1)-1=0，导致条件不成立
 			return ~index ? index : 0;
@@ -448,7 +478,7 @@ export default {
 			else index = 0;
 			// 当月份变化时，会导致日期的天数也会变化，如果原来选的天数大于变化后的天数，则重置为变化后的最大值
 			// 比如原来选中3月31日，调整为2月后，日期变为最大29，这时如果day值继续为31显然不合理，于是将其置为29(picker-column从1开始)
-			if(this.day > this.days.length) this.day = this.days.length;
+			if (this.day > this.days.length) this.day = this.days.length;
 			this.valueArr.splice(index, 1, this.getIndex(this.days, this.day));
 		},
 		setHours() {
@@ -523,6 +553,7 @@ export default {
 		},
 		close() {
 			this.$emit('input', false);
+			this.$emit('close', false);
 		},
 		// 用户更改picker的列选项
 		change(e) {
@@ -551,7 +582,7 @@ export default {
 				if (index != null) {
 					this.$emit('columnchange', {
 						column: index,
-						index: e.detail.value[index]
+						index: e.detail.value[index],
 					});
 				}
 			}
@@ -586,10 +617,11 @@ export default {
 		// 获取时间戳
 		getTimestamp() {
 			// yyyy-mm-dd为安卓写法，不支持iOS，需要使用"/"分隔，才能二者兼容
-			let time = this.year + '/' + this.month + '/' + this.day + ' ' + this.hour + ':' + this.minute + ':' + this.second;
+			let time =
+				this.year + '/' + this.month + '/' + this.day + ' ' + this.hour + ':' + this.minute + ':' + this.second;
 			return new Date(time).getTime() / 1000;
-		}
-	}
+		},
+	},
 };
 </script>
 

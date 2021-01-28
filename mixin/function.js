@@ -23,11 +23,16 @@ export function money_num(num) {
 
 // 判断当前是否在微信浏览器中
 export function browserType() {
-    var ua = navigator.userAgent.toLowerCase();
-    var isWinxin = ua.indexOf('micromessenger') != -1;
-    if (isWinxin) {
-        return true;
-    } else {
-        return false; 
+    try { // 执行块
+        var ua = navigator.userAgent.toLowerCase();
+        var isWinxin = ua.indexOf('micromessenger') != -1;
+        if (isWinxin) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (err) { // 上述代码块执行出错时执行
+        return false;
     }
+
 }
