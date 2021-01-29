@@ -128,7 +128,7 @@ export default {
 		default_color: {
 			type: String,
 			default() {
-				return '#333333';
+				return '#ffffff';
 			},
 		},
 		// 渐变展示的字体颜色

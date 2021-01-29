@@ -1,7 +1,12 @@
 
 <script>
 export default {
-	onLaunch: function () {},
+	onLaunch: function () { 
+        if(!uni.getStorageSync('token')){
+            this.skipLink('reLaunch', '/pages/views/login/login');
+        }
+        
+    },
 	onShow: function () {},
 	onHide: function () {},
 };

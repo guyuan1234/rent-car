@@ -50,7 +50,7 @@ let request = (data, resolve, reject) => {
     }
     const _token = uni.getStorageSync('token')
     uni.request({
-        url: _url, 
+        url: _url,
         data: _data,
         method: _method,
         timeout: request_timeout * 1000, // 请求超时时间
@@ -73,21 +73,14 @@ let request = (data, resolve, reject) => {
                 }
                 request(data, resolve, reject);
             } else if (res.data.code === 101 || res.data.code === 104 || res.data.code === 105) {
+                toast('请登录')
                 // 需要重新登录
                 setTimeout(() => {
-                    modal({
-                        content: res.data.code === 101 ? '请登录后再操作' : res.data.code === 104 ? '登陆已过期' : '账号异常，请重新登陆',
-                        confirmText: '重新登录'
-                    }).then(() => {
-                        uni.removeStorageSync('token');
-                        // #ifdef H5
-                        // 存储微信授权登录后跳转页面
-                        uni.setStorageSync('login_back_url', location.pathname + location.search);
-                        uni.navigateTo({
-                            url: _browserType ? '/pages/views/auth-login/auth-login' : '/pages/views/mobile-login/mobile-login',
-                        }) 
-                        // #endif
-                    }) 
+                    uni.removeStorageSync('token');
+                    uni.removeStorageSync('is_leader');
+                    uni.reLaunch({
+                        url: '/pages/views/login/login'
+                    });
                 }, skeleton_time)
                 resolve(res.data)
             }
@@ -104,7 +97,7 @@ let request = (data, resolve, reject) => {
                             url: _browserType ? '/pages/views/auth-login/auth-login' : '/pages/views/mobile-login/mobile-login',
                         })
                     })
-                }, skeleton_time) 
+                }, skeleton_time)
                 resolve(res.data)
             }
             // #endif

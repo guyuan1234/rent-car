@@ -10,68 +10,116 @@
 			"u-(.*)": "@/components/uview-ui/components/u-$1/u-$1.vue"
 		}
 	},
-	"pages": [
-		{
-			"path": "pages/tabbar/rent-car/rent-car",
-			"style": {
-				"navigationBarTitleText": "租车", 
-				"enablePullDownRefresh": false
-			}
-        },
-        {
-			"path": "pages/tabbar/put-up/put-up",
-			"style": {
-				"navigationBarTitleText": "住宿", 
-				"enablePullDownRefresh": false
-			}
-        },
-        {
-			"path": "pages/tabbar/salary-earner/salary-earner",
-			"style": {
-				"navigationBarTitleText": "雇工", 
-				"enablePullDownRefresh": false
-			}
-        },
+	"pages": [ 
         {
 			"path": "pages/tabbar/preson-center/preson-center",
 			"style": {
-				"navigationBarTitleText": "我的", 
+				"navigationBarTitleText": "我的",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+        },
+        {
+			"path": "pages/views/login/login",
+			"style": {
+				"navigationBarTitleText": "一所勘测信息管理系统",
 				"enablePullDownRefresh": false
 			}
-        }
-    ],
-    "tabBar": {
-        "color": "#b1b7bf",
-        "selectedColor": "#0877bc",
-        "borderStyle": "black",
-        "backgroundColor": "#ffffff",
-        "list": [
-            {
-                "pagePath": "pages/tabbar/rent-car/rent-car",
-                "iconPath": "static/images/icon/tabbar-1.png",
-                "selectedIconPath": "static/images/icon/tabbar-1-s.png",
-                "text": "租车"
-            },
-            {
-                "pagePath": "pages/tabbar/put-up/put-up",
-                "iconPath": "static/images/icon/tabbar-2.png",
-                "selectedIconPath": "static/images/icon/tabbar-2-s.png",
-                "text": "住宿"
-            },
-            {
-                "pagePath": "pages/tabbar/salary-earner/salary-earner",
-                "iconPath": "static/images/icon/tabbar-3.png",
-                "selectedIconPath": "static/images/icon/tabbar-3-s.png",
-                "text": "雇工"
-            },
-            {
-                "pagePath": "pages/tabbar/preson-center/preson-center",
-                "iconPath": "static/images/icon/tabbar-4.png",
-                "selectedIconPath": "static/images/icon/tabbar-4-s.png",
-                "text": "我的"
-            }
-        ]
-    },
+		},
+		{
+			"path": "pages/tabbar/rent-car/rent-car",
+			"style": {
+				"navigationBarTitleText": "租车",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/tabbar/put-up/put-up",
+			"style": {
+				"navigationBarTitleText": "住宿",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/tabbar/salary-earner/salary-earner",
+			"style": {
+				"navigationBarTitleText": "雇工",
+				"enablePullDownRefresh": false
+			}
+		}, 
+		{
+			"path": "pages/views/rent-car-detail/rent-car-detail",
+			"style": {
+				"navigationBarTitleText": "租车信息",
+				"enablePullDownRefresh": true,
+				"backgroundColor": "#0877bc", 
+				"navigationBarTextStyle": "white", 
+				"navigationBarBackgroundColor": "#0877bc"
+			}
+		},
+		{
+			"path": "pages/views/put-up-detail/put-up-detail",
+			"style": {
+				"navigationBarTitleText": "住宿信息",
+				"enablePullDownRefresh": true,
+				"backgroundColor": "#0877bc", 
+				"navigationBarTextStyle": "white", 
+				"navigationBarBackgroundColor": "#0877bc"
+			}
+		},
+		{
+			"path": "pages/views/salary-earner-detail/salary-earner-detail",
+			"style": {
+				"navigationBarTitleText": "雇工信息",
+				"enablePullDownRefresh": true,
+				"backgroundColor": "#0877bc", 
+				"navigationBarTextStyle": "white", 
+				"navigationBarBackgroundColor": "#0877bc"
+			}
+		},
+		{
+			"path": "pages/views/message-list/message-list",
+			"style": {
+				"navigationBarTitleText": "通知",
+				"enablePullDownRefresh": true,
+				"backgroundColor": "#0877bc", 
+				"navigationBarTextStyle": "white", 
+				"navigationBarBackgroundColor": "#0877bc"
+			}
+		}
+	],
+	"tabBar": {
+		"color": "#b1b7bf",
+		"selectedColor": "#0877bc",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath": "pages/tabbar/rent-car/rent-car",
+				"iconPath": "static/images/icon/tabbar-1.png",
+				"selectedIconPath": "static/images/icon/tabbar-1-s.png",
+				"text": "租车"
+			},
+			{
+				"pagePath": "pages/tabbar/put-up/put-up",
+				"iconPath": "static/images/icon/tabbar-2.png",
+				"selectedIconPath": "static/images/icon/tabbar-2-s.png",
+				"text": "住宿"
+			},
+			{
+				"pagePath": "pages/tabbar/salary-earner/salary-earner",
+				"iconPath": "static/images/icon/tabbar-3.png",
+				"selectedIconPath": "static/images/icon/tabbar-3-s.png",
+				"text": "雇工"
+			},
+			{
+				"pagePath": "pages/tabbar/preson-center/preson-center",
+				"iconPath": "static/images/icon/tabbar-4.png",
+				"selectedIconPath": "static/images/icon/tabbar-4-s.png",
+				"text": "我的"
+			}
+		]
+	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "租车信息",
@@ -80,23 +128,43 @@
 	},
 	"condition": {
 		"current": 1,
-        "list": [ 
+        "list": [
             {
-                "name": "租车",
-                "path": "pages/tabbar/rent-car/rent-car" 
-            },
+				"name": "登录",
+				"path": "pages/views/login/login"
+			},
             {
-                "name": "住宿",
-                "path": "pages/tabbar/put-up/put-up" 
-            },
+				"name": "通知",
+				"path": "pages/views/message-list/message-list"
+			},
             {
-                "name": "雇工",
-                "path": "pages/tabbar/salary-earner/salary-earner" 
-            },
+				"name": "雇工信息",
+				"path": "pages/views/salary-earner-detail/salary-earner-detail"
+			},
             {
-                "name": "我的",
-                "path": "pages/tabbar/preson-center/preson-center" 
-            }
+				"name": "住宿信息",
+				"path": "pages/views/put-up-detail/put-up-detail"
+			},
+			{
+				"name": "租车信息",
+				"path": "pages/views/rent-car-detail/rent-car-detail"
+			},
+			{
+				"name": "租车",
+				"path": "pages/tabbar/rent-car/rent-car"
+			},
+			{
+				"name": "住宿",
+				"path": "pages/tabbar/put-up/put-up"
+			},
+			{
+				"name": "雇工",
+				"path": "pages/tabbar/salary-earner/salary-earner"
+			},
+			{
+				"name": "我的",
+				"path": "pages/tabbar/preson-center/preson-center"
+			}
 		]
 	}
 }
