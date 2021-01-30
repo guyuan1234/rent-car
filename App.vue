@@ -2,6 +2,7 @@
 <script>
 export default {
 	onLaunch: function () { 
+        uni.hideTabBar();
         if(!uni.getStorageSync('token')){
             this.skipLink('reLaunch', '/pages/views/login/login');
         }

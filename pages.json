@@ -51,7 +51,7 @@
 			"path": "pages/views/rent-car-detail/rent-car-detail",
 			"style": {
 				"navigationBarTitleText": "租车信息",
-				"enablePullDownRefresh": true,
+				"enablePullDownRefresh": false,
 				"backgroundColor": "#0877bc", 
 				"navigationBarTextStyle": "white", 
 				"navigationBarBackgroundColor": "#0877bc"
@@ -61,7 +61,7 @@
 			"path": "pages/views/put-up-detail/put-up-detail",
 			"style": {
 				"navigationBarTitleText": "住宿信息",
-				"enablePullDownRefresh": true,
+				"enablePullDownRefresh": false,
 				"backgroundColor": "#0877bc", 
 				"navigationBarTextStyle": "white", 
 				"navigationBarBackgroundColor": "#0877bc"
@@ -71,7 +71,7 @@
 			"path": "pages/views/salary-earner-detail/salary-earner-detail",
 			"style": {
 				"navigationBarTitleText": "雇工信息",
-				"enablePullDownRefresh": true,
+				"enablePullDownRefresh": false,
 				"backgroundColor": "#0877bc", 
 				"navigationBarTextStyle": "white", 
 				"navigationBarBackgroundColor": "#0877bc"
@@ -82,6 +82,36 @@
 			"style": {
 				"navigationBarTitleText": "通知",
 				"enablePullDownRefresh": true,
+				"backgroundColor": "#0877bc", 
+				"navigationBarTextStyle": "white", 
+				"navigationBarBackgroundColor": "#0877bc"
+			}
+		},
+		{
+			"path": "pages/views/rent-car-look/rent-car-look",
+			"style": {
+				"navigationBarTitleText": "租车信息",
+				"enablePullDownRefresh": false,
+				"backgroundColor": "#0877bc", 
+				"navigationBarTextStyle": "white", 
+				"navigationBarBackgroundColor": "#0877bc"
+			}
+		},
+		{
+			"path": "pages/views/put-up-look/put-up-look",
+			"style": {
+				"navigationBarTitleText": "住宿信息",
+				"enablePullDownRefresh": false,
+				"backgroundColor": "#0877bc", 
+				"navigationBarTextStyle": "white", 
+				"navigationBarBackgroundColor": "#0877bc"
+			}
+		},
+		{
+			"path": "pages/views/salary-earner-look/salary-earner-look",
+			"style": {
+				"navigationBarTitleText": "雇工信息",
+				"enablePullDownRefresh": false,
 				"backgroundColor": "#0877bc", 
 				"navigationBarTextStyle": "white", 
 				"navigationBarBackgroundColor": "#0877bc"
@@ -129,6 +159,21 @@
 	"condition": {
 		"current": 1,
         "list": [
+            {
+				"name": "雇工详情",
+                "path": "pages/views/salary-earner-look/salary-earner-look",
+                "query": "id=2&type=1"
+			},
+            {
+				"name": "住宿详情",
+                "path": "pages/views/put-up-look/put-up-look",
+                "query": "id=2&type=1"
+			},
+            {
+				"name": "租车详情",
+                "path": "pages/views/rent-car-look/rent-car-look",
+                "query": "id=2&type=1"
+			},
             {
 				"name": "登录",
 				"path": "pages/views/login/login"

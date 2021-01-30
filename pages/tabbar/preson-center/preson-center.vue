@@ -31,10 +31,12 @@
 				</view>
 			</tui-list-cell>
 		</view>
+        <u-tabbar :mid-button="false" :list="list"></u-tabbar>
 	</div>
 </template>
 
 <script>
+import { mapState,mapMutations } from 'vuex';
 export default {
 	components: {},
 	data: () => ({
@@ -68,8 +70,11 @@ export default {
 			},
 		],
 	}),
-	computed: {},
+	computed: { 
+		...mapState(['list']),
+    },
 	methods: {
+        ...mapMutations(['setingAuth']),
 		get_data_fun() {
 			this.$axios({
 				url: '/user/userCenter',
@@ -77,8 +82,8 @@ export default {
 				console.log(res);
 				if (res.code == 0) {
 					this.userCenterw = res.data;
-					// is_leader = 1 项目负责人  2 = 测量员 只能雇工
-					uni.setStorageSync('is_leader', res.data.is_leader);
+                    // is_leader = 1 项目负责人  2 = 测量员 只能雇工
+                    this.setingAuth(res.data.is_leader)
 				}
 			});
 		},

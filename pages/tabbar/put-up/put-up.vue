@@ -1,22 +1,22 @@
 <template>
 	<div>
 		<put-up></put-up>
+		<u-tabbar :mid-button="false" :list="list"></u-tabbar>
 	</div>
 </template>
 
 <script>
-import putUp from '@/components/project/put-up/put-up.vue'
+import { mapState } from 'vuex';
+import putUp from '@/components/project/put-up/put-up.vue';
 export default {
 	components: {
-        putUp
-    },
-	data: () => ({
-		
-	}),
-	computed: {},
-	methods: {
-		
+		putUp,
 	},
+	data: () => ({}),
+	computed: {
+		...mapState(['list']),
+	},
+	methods: {},
 	watch: {},
 
 	// 页面周期函数--监听页面加载
@@ -30,9 +30,7 @@ export default {
 	// 页面周期函数--监听页面卸载
 	onUnload() {},
 	// 页面处理函数--监听用户下拉动作
-	onPullDownRefresh() {
-		uni.stopPullDownRefresh();
-	},
+	onPullDownRefresh() {},
 	// 页面处理函数--监听用户上拉触底
 	onReachBottom() {},
 	// 页面处理函数--监听页面滚动(not-nvue)
@@ -42,6 +40,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scope>
-
-</style>
+<style></style>

@@ -1,17 +1,21 @@
 <template>
 	<div>
-        <rent-car></rent-car>
-    </div>
+		<rent-car></rent-car>
+		<u-tabbar :mid-button="false" :list="list"></u-tabbar>
+	</div>
 </template>
 
 <script>
-import rentCar from '@/components/project/rent-car/rent-car.vue'
+import { mapState } from 'vuex';
+import rentCar from '@/components/project/rent-car/rent-car.vue';
 export default {
 	components: {
-        rentCar
-    },
+		rentCar,
+	},
 	data: () => ({}),
-	computed: {},
+	computed: {
+		...mapState(['list']),
+	},
 	methods: {},
 	watch: {},
 
@@ -26,9 +30,7 @@ export default {
 	// 页面周期函数--监听页面卸载
 	onUnload() {},
 	// 页面处理函数--监听用户下拉动作
-	onPullDownRefresh() {
-		uni.stopPullDownRefresh();
-	},
+	onPullDownRefresh() {},
 	// 页面处理函数--监听用户上拉触底
 	onReachBottom() {},
 	// 页面处理函数--监听页面滚动(not-nvue)
@@ -38,4 +40,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scope></style>
+<style></style>

@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 export default {
 	components: {},
 	data: () => ({
@@ -29,6 +30,7 @@ export default {
 	}),
 	computed: {},
 	methods: {
+		...mapMutations(['setingAuth']),
 		loginEvent() {
 			if (!this.phone) {
 				this.common.toast('请输入您的账号');
@@ -37,7 +39,7 @@ export default {
 				this.common.toast('请输入您的账号密码');
 				return;
 			}
-            this.common.loading();
+			this.common.loading();
 			this.$axios({
 				url: '/index/login',
 				data: {
@@ -46,11 +48,12 @@ export default {
 				},
 			}).then((res) => {
 				this.setTimeout(() => {
-                    uni.hideLoading();
+					uni.hideLoading();
 					if (res.code == 0) {
+						uni.setStorageSync('login_phone', this.phone);
 						uni.setStorageSync('token', res.data.token);
 						// is_leader = 1 项目负责人  2 = 测量员 只能雇工
-						uni.setStorageSync('is_leader', res.data.is_leader);
+						this.setingAuth(res.data.is_leader);
 						this.skipLink('switchTab', '/pages/tabbar/preson-center/preson-center');
 					}
 				});
@@ -60,7 +63,9 @@ export default {
 	watch: {},
 
 	// 页面周期函数--监听页面加载
-	onLoad() {},
+	onLoad() {
+		this.phone = uni.getStorageSync('login_phone') || '';
+	},
 	// 页面周期函数--监听页面初次渲染完成
 	onReady() {},
 	// 页面周期函数--监听页面显示(not-nvue)
