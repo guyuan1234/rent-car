@@ -238,7 +238,7 @@
 	}
 
 	.u-tabbar {
-
+		
 		&__content {
 			@include vue-flex;
 			align-items: center;
@@ -247,7 +247,7 @@
 			bottom: 0;
 			left: 0;
 			width: 100%;
-			z-index: 998;
+			z-index: 1000;
 			/* #ifndef APP-NVUE */
 			box-sizing: content-box;
 			/* #endif */
