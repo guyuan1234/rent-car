@@ -269,28 +269,28 @@ export default {
 					formData: _this.formData,
 					filePath: url,
 
-					success: function (res) {
+					success: function (res) { 
 						if (res.statusCode == 200) {
-							let d = JSON.parse(res.data);
+                            let d = JSON.parse(res.data); 
 							//判断code，以实际接口规范判断
-							if (d.code === 0) {
+							if (d.code === 0) { 
 								// 上传成功 d.url 为上传后图片地址，以实际接口返回为准
-								d.data.fullurl && (_this.imageList[index] = d.data);
+                                d.data && (_this.imageList[index] = d.data);  
 								_this.$set(_this.statusArr, index, d.data ? '1' : '3');
 							} else {
 								// 上传失败
-								const _res = JSON.parse(res.data);
+								// const _res = JSON.parse(res.data);
 								_this.$set(_this.statusArr, index, '3');
-								//
-								if (_res.code === 101 || _res.code === 104 || _res.code === 105) {
-									// 需要重新登录 
-									_this.common.toast(_res.message);
-									uni.removeStorageSync('token');
-									uni.navigateTo({
-										url: '/pages/views/login/login',
-									});
-									resolve(res.data);
-								}
+								// //
+								// if (_res.code === 101 || _res.code === 104 || _res.code === 105) {
+								// 	// 需要重新登录 
+								// 	_this.common.toast(_res.message);
+								// 	uni.removeStorageSync('token');
+								// 	uni.navigateTo({
+								// 		url: '/pages/views/login/login',
+								// 	});
+								// 	resolve(res.data);
+								// }
 							}
 							resolve(index);
 						} else {

@@ -413,7 +413,7 @@ export default {
 				});
 			});
 		},
-		complete(data, item) {
+		complete(data, item) { 
 			if (!this.detail_data) {
 				this.sub_data[item] = data.imgArr[0];
 			} else {
