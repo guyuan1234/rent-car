@@ -413,7 +413,7 @@ export default {
 				});
 			});
 		},
-		complete(data, item) { 
+		complete(data, item) {
 			if (!this.detail_data) {
 				this.sub_data[item] = data.imgArr[0];
 			} else {
@@ -421,8 +421,10 @@ export default {
 			}
 		},
 		openEvent(item, type) {
-			// uni.hideTabBar();
-			if (type && !this.sub_data.pid) {
+			// uni.hideTabBar();  
+			if (item == 'projectShow' && (!this.commonData.project || this.commonData.project.length <= 0)) {
+				this.common.toast('暂未关联项目');
+			} else if (type && !this.sub_data.pid) {
 				this.common.toast('请先选择项目名称');
 			} else {
 				this[item] = true;

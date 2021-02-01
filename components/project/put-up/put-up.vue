@@ -311,7 +311,9 @@ export default {
 		},
 		openEvent(item, type) {
 			// uni.hideTabBar();
-			if (type && !this.sub_data.pid) {
+			if (item == 'projectShow' && (!this.commonData.project || this.commonData.project.length <= 0)) {
+				this.common.toast('暂未关联项目');
+			} else if (type && !this.sub_data.pid) {
 				this.common.toast('请先选择项目名称');
 			} else {
 				this[item] = true;

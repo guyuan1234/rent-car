@@ -13,9 +13,9 @@ let config = {
 
 // 非开发环境下配置
 if (process.env.NODE_ENV != 'development') {
-    config.request_url = 'http://nongxiangyuan.admin.weimeigu.com.cn/api'; // 请求地址
+    config.request_url = 'https://car.xyasin.cn/api'; // 请求地址
     config.reg_open = true; // 开启正则验证
-    config.skeleton_time = 0; // 骨架屏等待时间
+    config.skeleton_time = 300; // 骨架屏等待时间
     // #ifdef H5
     config.appid = 'wx280025459fa1971f'; // 公众号appid
     // #endif

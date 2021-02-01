@@ -297,7 +297,11 @@ export default {
 			});
 		},
 		openEvent(item) {
-			this[item] = true;
+			if (item == 'projectShow' && (!this.commonData.project || this.commonData.project.length <= 0)) {
+				this.common.toast('暂未关联项目');
+			} else {
+				this[item] = true;
+			}
 			// uni.hideTabBar();
 		},
 		confirm(data, item) {

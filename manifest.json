@@ -1,5 +1,5 @@
 {
-    "name" : "优享拍拍二手车",
+    "name" : "租车",
     "appid" : "__UNI__95EFDDC",
     "description" : "",
     "versionName" : "1.0.0",
@@ -49,9 +49,12 @@
     },
     "quickapp" : {},
     "mp-weixin" : {
-        "appid" : "wx4cd15c5c0107f989",
+        "appid" : "wx3c4881ca63b66613",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : false,
+            "minified" : true,
+            "postcss" : false,
+            "es6" : false
         },
         "usingComponents" : true,
         "permission" : {
